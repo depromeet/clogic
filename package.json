@@ -1,0 +1,20 @@
+{
+  "name": "deact",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/depromeet/clogic.git",
+  "author": "clogic <choiseungil29@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "html-webpack-plugin": "^4.3.0",
+    "ts-loader": "^8.0.1",
+    "typescript": "^3.9.7",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
