@@ -1,3 +1,15 @@
-import { func } from "./packages/test";
+import { createElement, render } from "./packages";
 
-func();
+const lastChildComponent = () => {
+  return render("div", ["span", "b"]);
+};
+
+const childComponent = () => {
+  return render("div", ["div", "span", "p", lastChildComponent]);
+};
+
+const rootApp = () => {
+  return render("div", ["div", "span", childComponent]);
+};
+
+createElement(rootApp, "root");
