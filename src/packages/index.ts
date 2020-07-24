@@ -1,4 +1,8 @@
-import { RenderFunction, HTMLElementTagNameList } from "./types";
+import {
+  RenderFunction,
+  HTMLElementTagNameList,
+  ComponentProps,
+} from "./types";
 
 export const createElement = (rootFunction: RenderFunction, id: string) => {
   const element = rootFunction();
@@ -11,16 +15,21 @@ export const createElement = (rootFunction: RenderFunction, id: string) => {
 };
 
 export const render = (
-  elKey: HTMLElementTagNameList,
-  children: (HTMLElementTagNameList | RenderFunction)[]
+  elKey: ComponentProps,
+  children: (ComponentProps | RenderFunction)[]
 ) => {
-  const el = document.createElement(elKey);
+  const { tag, attrs, value } = elKey;
+  const el = document.createElement(tag);
+  el.innerText = value;
   children
     .map((child) => {
       if (typeof child === "function") {
         return child();
       } else {
-        return document.createElement(child);
+        const { tag, attrs, value } = child;
+        const childEl = document.createElement(tag);
+        childEl.innerText = value;
+        return childEl;
       }
     })
     .forEach((child) => el.appendChild(child));

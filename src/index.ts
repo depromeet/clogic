@@ -1,15 +1,22 @@
 import { createElement, render } from "./packages";
 
 const lastChildComponent = () => {
-  return render("div", ["span", "b"]);
+  return render({ tag: "div", attrs: {}, value: "" }, [
+    { tag: "span", attrs: {}, value: "" },
+    { tag: "b", attrs: {}, value: "" },
+  ]);
 };
 
 const childComponent = () => {
-  return render("div", ["div", "span", "p", lastChildComponent]);
+  return render({ tag: "div", attrs: {}, value: "" }, [lastChildComponent]);
 };
 
 const rootApp = () => {
-  return render("div", ["div", "span", childComponent]);
+  return render({ tag: "div", attrs: {}, value: "" }, [
+    { tag: "div", attrs: {}, value: "hi" },
+    { tag: "span", attrs: {}, value: "what" },
+    childComponent,
+  ]);
 };
 
 createElement(rootApp, "root");
