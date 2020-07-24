@@ -12,11 +12,14 @@ const childComponent = () => {
 };
 
 const rootApp = () => {
-  return render({ tag: "div", attrs: {}, value: "" }, [
-    { tag: "div", attrs: {}, value: "hi" },
-    { tag: "span", attrs: {}, value: "what" },
-    childComponent,
-  ]);
+  return render(
+    { tag: "div", attrs: { style: "background-color:black" }, value: "" },
+    [
+      { tag: "div", attrs: {}, value: "hi" },
+      { tag: "span", attrs: { style: "color: white;" }, value: "what" },
+      childComponent,
+    ]
+  );
 };
 
 createElement(rootApp, "root");

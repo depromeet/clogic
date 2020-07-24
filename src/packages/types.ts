@@ -4,6 +4,6 @@ export type RenderFunction = () => HTMLElementTagNameMap[HTMLElementTagNameList]
 
 export interface ComponentProps {
   tag: HTMLElementTagNameList;
-  attrs: object;
+  attrs: { [key: string]: string };
   value: string;
 }
