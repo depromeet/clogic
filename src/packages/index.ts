@@ -20,9 +20,8 @@ export const render = (
 ) => {
   const { tag, attrs, value } = elKey;
   const el = document.createElement(tag);
-  for (let key in attrs) {
-    el.setAttribute(key, attrs[key]);
-  }
+  Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+
   el.innerText = value;
   children
     .map((child) => {
@@ -31,9 +30,11 @@ export const render = (
       } else {
         const { tag, attrs, value } = child;
         const childEl = document.createElement(tag);
-        for (let key in attrs) {
-          childEl.setAttribute(key, attrs[key]);
-        }
+
+        Object.entries(attrs).forEach(([key, value]) =>
+          childEl.setAttribute(key, value)
+        );
+
         childEl.innerText = value;
         return childEl;
       }
